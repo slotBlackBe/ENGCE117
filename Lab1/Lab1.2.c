@@ -1,26 +1,17 @@
 #include <stdio.h>
 
 int main() {
-    int score; // ประกาศตัวเเปรสำหรับเก็บคะเเนนที่ผู้ใช้ป้อนเข้า
-    printf("Enter your score: "); // เเสดงข้อความให้ผู้ใช้ป้อนคะเเนน
-    // รับค่าคะเเนนจากผู้ใช้
-    // หาก scanf() อ่านค่าไม่สำเร็จจะคืนค่าไม่เท่ากับ 1
-    if (scanf("%d", &score) != 1) {
-        return 1; // ถ้ารับค่าผิดให้จบโปรเเกรมทันที
+    int N, i;
+
+    printf("Enter number: ");
+
+    if (scanf("%d", &N) != 1) {
+        return 1; 
     }
 
-    // ตรวจสอบช่วงคะเนนเเละเเสดงผลเกรดตามเงื่อนไขที่กำหนด
-    if (score >= 80) {
-        printf("Grade A\n"); // ถ้าคะเเนนตั้งเเต่ 80 ขึ้นไป Grade A
-    } else if (score >= 70) {
-        printf("Grade B\n"); // ถ้าคะเเนนตั้งเเต่ 70 ขึ้นไปเเต่น้อยกว่า 80 Grade B
-    } else if (score >= 60) {
-        printf("Grade C\n"); // ถ้าคะเเนนตั้งเเต่ 60 ขึ้นไปเเต่น้อยกว่า 70 Grade C
-    } else if (score >= 50) {
-        printf("Grade D\n"); // ถ้าคะเเนนตั้งเเต่ 50 ขึ้นไปเเต่น้อยกว่า 60 Grade D
-    } else {
-        printf("Grade F\n"); // ถ้าคะเเนนน้อยกว่า 50 Grade F
+    for (i = 0; i < N; i++) {
+        printf("Hello World\n");
     }
-
-    return 0; // จบโปรแกรม
+    
+    return 0;
 }
