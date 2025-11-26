@@ -1,17 +1,21 @@
 #include <stdio.h>
 
 int main() {
-    int N, i;
+    int score; 
 
-    printf("Enter number: ");
+    if (scanf("%d", &score) != 1) { 
+        return 1;
+    } else if ( score >= 80 ) { 
+        printf("Grade A\n");
+    } else if ( score >=70 ) { 
+        printf("Grade B\n");
+    } else if ( score >= 60 ) { 
+        printf("Grade C\n");
+    } else if ( score >= 50 ) { 
+        printf("Grade D\n");
+    } else if ( score < 50 ){ 
+        printf("Grade F\n");
+    } 
 
-    if (scanf("%d", &N) != 1) {
-        return 1; 
-    }
-
-    for (i = 0; i < N; i++) {
-        printf("Hello World\n");
-    }
-    
     return 0;
 }
