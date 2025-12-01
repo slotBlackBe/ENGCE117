@@ -1,49 +1,45 @@
 #include <stdio.h>
 
 int main() {
-    int N, i;
-    int studentId, score, totalClasses, absentClasses;
-    float attendancePercent;
-    int passCount = 0;
-    int failCount = 0;
+    int studentTotal;
+    int sid, score, totalCls, absentCls;
+    float attendRate;
 
-    if (scanf("%d", &N) != 1) {
-        return 1;
+    int passBucket = 0, failBucket = 0;
+
+    if (scanf("%d", &studentTotal) != 1) {
+        return 1; 
     }
 
-    for (i = 0; i < N; i++) {
-        if (scanf("%d %d %d %d", &studentId, &score, &totalClasses, &absentClasses) != 4) {
-            break;
+    for (int idx = 0; idx < studentTotal; idx++) {
+
+        if (scanf("%d %d %d %d", &sid, &score, &totalCls, &absentCls) != 4) {
+            return 1; 
         }
 
-        attendancePercent = (float)(totalClasses - absentClasses) / totalClasses * 100.0;
+        attendRate = (float)(totalCls - absentCls) / totalCls * 100.0f;
 
-        int scorePass = (score >= 50);
-        int attendancePass = (attendancePercent >= 75.0);
+        int failScore = (score < 50);
+        int failAttend = (attendRate < 75.0f);
 
-        printf("Student %d: ", studentId);
-
-        if (scorePass && attendancePass) {
-            printf("PASS\n");
-            passCount++;
+        if (!failScore && !failAttend) {
+            printf("Student %d: Pass\n", sid);
+            passBucket++;
         } else {
-            printf("FAIL - ");
+            failBucket++;
+            if (failScore && failAttend) {
+                printf("Student %d: fail - Both Score and Attendance\n", sid);
 
-            if (!scorePass && !attendancePass) {
-                printf("Both Score and Attendance\n");
-            } else if (!scorePass) {
-                printf("Low Score\n");
-            } else if (!attendancePass) {
-                printf("Low Attendance (%.2f%%)\n", attendancePercent);
+            } else if (failScore) {
+                printf("Student %d: fail - Low Score\n", sid);
+            } else {
+                printf("Student %d: fail - Low Attendance (%.2f%%)\n", sid, attendRate); 
             }
-
-            failCount++;
         }
     }
 
-    printf("\n--- Summary ---\n");
-    printf("Total PASS: %d\n", passCount);
-    printf("Total FAIL: %d\n", failCount);
+    printf("Total Passed: %d\n", passBucket);
+    printf("Total Failed: %d\n", failBucket);
 
     return 0;
 }
